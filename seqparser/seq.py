@@ -6,6 +6,7 @@ def transcribe(seq: str) -> str:
     transcribes DNA to RNA by generating
     the complement sequence with T -> U replacement
     """
+    pass
 
 
 def reverse_transcribe(seq: str) -> str:
@@ -13,3 +14,4 @@ def reverse_transcribe(seq: str) -> str:
     transcribes DNA to RNA then reverses
     the strand
     """
+    pass
