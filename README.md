@@ -13,13 +13,14 @@ The learning goals of this project are:
 
 # Assignment Tasks
 
-## Coding Assessment
+## Coding Assessment -- these are placeholders for what we might ask you to do, but in this first assignment we will complete these.
 - [ ] Write a Fasta Parser (Write this code in the parse.py file)
 - [ ] Write a Fastq Parser (Write this code in the parse.py file)
 - [ ] Write a Transcription Function (Write this code in the seq.py file)
 - [ ] Write a Reverse Transcription Function (Write this code in the seq.py file)
 
-## Software Development Assessment
+
+## Software Development Assessment 
 - [ ] Create a pip installable tool (only locally, do not submit to PyPI)
 	- [ ] Edit the `pyproject.toml` file to reflect author information
 	- [ ] Update the dependencies to include those that you use in your code
@@ -30,7 +31,7 @@ The learning goals of this project are:
 	- [ ] Transcription
 	- [ ] Reverse Transcription
 
-- [ ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
+- [ ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions) (This is the only one you actually have to do)
 
 	See blogposts below on helping set up github actions with pytest:
 	
