@@ -19,9 +19,22 @@ class Parser:
         # Should I ever call the `__init__` method? 
             Like most hidden methods (the double underscored names) this is not generally something
             you call from the outside of a class. However, if you need to specify a different
-            `__init__` method for a subclass you will need to call this with the `Super` keyword. We
+            `__init__` method for a subclass you will need to call this with the `super` keyword. We
             won't get into this now, but if you are interested feel free to reach out to the TAs or
-            check out the documentation on the `Super` keyword. 
+            check out the documentation on the `super` keyword. 
+
+            The __init__ method is a good example of what in Python are referred to as "dunder methods" 
+            (double underscore). These are methods that allow to interact with basic components of relatively low-level objects
+            in Python. Another good example of a "dunder method" is the __len__ method. 
+
+            When you call len(some_object), the actual way that the length of the length of that object 
+            is computed is through the object's referrenced implementation of __len__. For some objects,
+            such as strings, it may be relatively clear how this works. But consider instead a custom
+            class that you create to keep track of an arbitrary number of FASTA sequences. Then,
+            the way you might allow another programmer to return the number of FASTA sequences might be
+            by implementing the __len__ method of that class. You could instead chose to create an attribute
+            called .num_sequences or .length or something similar, but this is just an example.
+        
         """
         self.filename = filename
 
