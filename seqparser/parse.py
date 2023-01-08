@@ -130,6 +130,7 @@ class FastaParser(Parser):
         """
         returns the next fasta record
         """
+        pass
 
 
 class FastqParser(Parser):
@@ -140,4 +141,5 @@ class FastqParser(Parser):
         """
         returns the next fastq record
         """
+        pass
 
