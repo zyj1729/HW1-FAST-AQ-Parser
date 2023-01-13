@@ -21,9 +21,9 @@ The learning goals of this project are:
 - [ x ] Write a Reverse Transcription Function (Write this code in the seq.py file). 
 
 ## Software Development Assessment 
-- [ x ] Create a pip installable tool (only locally, do not submit to PyPI)
-	- [ x ] Edit the `pyproject.toml` file to reflect author information
-	- [ x ] Update the dependencies to include those that you use in your code
+- [  ] Create a pip installable tool (only locally, do not submit to PyPI)
+	- [  ] Edit the `pyproject.toml` file to reflect author information
+	- [  ] Update the dependencies to include those that you use in your code
 
 - [ ] Write a unit test (in the test.py file) for
 	- [ ] Fasta Parser
