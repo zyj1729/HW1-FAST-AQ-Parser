@@ -5,6 +5,11 @@ requires = [
 	]
 build-backend = "flit_core.buildapi"
 
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+
 [project]
 name = "seqparser"
 authors = [{name = "Han Chen", email = "han.chen@ucsf.edu"}]
@@ -17,4 +22,4 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://github.com/hchen725/BMI203"
+Home = "https://github.com/hchen725/HW1-FAST-AQ-Parser"
