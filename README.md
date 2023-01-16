@@ -22,16 +22,16 @@ The learning goals of this project are:
 
 ## Software Development Assessment 
 - [ x ] Create a pip installable tool (only locally, do not submit to PyPI)
-	- [  ] Edit the `pyproject.toml` file to reflect author information
-	- [  ] Update the dependencies to include those that you use in your code
+	- [ x ] Edit the `pyproject.toml` file to reflect author information
+	- [ x ] Update the dependencies to include those that you use in your code
 
-- [ ] Write a unit test (in the test.py file) for
-	- [ ] Fasta Parser
-	- [ ] Fastq Parser
-	- [ ] Transcription
-	- [ ] Reverse Transcription
+- [ x ] Write a unit test (in the test.py file) for
+	- [ x ] Fasta Parser
+	- [ x ] Fastq Parser
+	- [ x ] Transcription
+	- [ x ] Reverse Transcription
 
-- [ ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
+- [ x ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
 
 	See blogposts below on helping set up github actions with pytest:
 	
@@ -43,6 +43,8 @@ The learning goals of this project are:
 	* runs pytest
 	
 	You can also reference the [Minimal-Example](https://github.com/bmi203-2023/Minimal-Example).
+
+![](https://github.com/hchen725/HW1-FAST-AQ-Parser/workflows/Project%20Tests/badge.svg)
 
 # Getting Started
 To get started you will need to fork this repository onto your own github. You will then work on the code base from your own repo and make changes to it in the form of commits. 

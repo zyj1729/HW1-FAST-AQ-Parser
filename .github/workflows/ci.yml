@@ -1,5 +1,5 @@
 # .github/workflows/app.yaml
-name: PyTest
+name: Project Tests
 on: push
 
 jobs:
