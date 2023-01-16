@@ -1,5 +1,5 @@
 import io
-from typing import Tuple, Union
+from typing import Tuple, Union, Iterator, Generator
 
 
 class Parser:
@@ -20,24 +20,13 @@ class Parser:
         # Should I ever call the `__init__` method?
             Like most hidden methods (the double underscored names) this is not generally something
             you call from the outside of a class. However, if you need to specify a different
-            `__init__` method for a subclass you will need to call this with the `super` keyword. We
+            `__init__` method for a subclass you will need to call this with the `Super` keyword. We
             won't get into this now, but if you are interested feel free to reach out to the TAs or
-            check out the documentation on the `super` keyword.
-
-            The __init__ method is a good example of what in Python are referred to as "dunder methods"
-            (double underscore). These are methods that allow to interact with basic components of relatively low-level objects
-            in Python. Another good example of a "dunder method" is the __len__ method.
-
-            When you call len(some_object), the actual way that the length of the length of that object
-            is computed is through the object's referrenced implementation of __len__. For some objects,
-            such as strings, it may be relatively clear how this works. But consider instead a custom
-            class that you create to keep track of an arbitrary number of FASTA sequences. Then,
-            the way you might allow another programmer to return the number of FASTA sequences might be
-            by implementing the __len__ method of that class. You could instead chose to create an attribute
-            called .num_sequences or .length or something similar, but this is just an example.
-
+            check out the documentation on the `Super` keyword.
         """
         self.filename = filename
+        self.store = True
+        self._sequences = None
 
     def get_record(
         self, f_obj: io.TextIOWrapper
@@ -103,25 +92,34 @@ class Parser:
         #
         # the interpretation of the following code is that for the lifetime of the filebuffer
         # returned by the `open` function it will be accessible as the variable `f_obj`
-        with open(self.filename, "r") as f_obj:
 
-            # this loop will break at some point!
-            # but I will leave it up to you to implement the fix!
+        nseq = 0
+        # 'with open' reads the filename as f_obj
+        with open(self.filename, "r") as f_obj: 
+            rec = self.get_record(
+                f_obj
+            )  # will be a generator that yields tuples of strings
 
-            # You will need to look at the `Try` / `Except` keywords in python
-            # and implement an exception for the error you will find in
-            # the error message you receive.
+            for seq in rec:
+                yield seq
+                nseq += 1
+            self.store = False
 
-            # Alternatively, you can reformulate this to return elements
-            # by just consuming an iterator.
+            if nseq == 0:
+                raise ValueError(f"File ({self.filename}) had 0 lines.")
 
-            while True:
-                rec = self.get_record(f_obj)
-                yield rec
+        # another way to do this with the original construction: 
+        #    while True:
+        #        rec = self.get_record(f_obj)
+        #        yield rec 
+        # is to implement for the FastaParser/FastqParser subclasses' _get_record
+        # functionality where you get (with `next(f_obj)`, for example) two lines
+        # at a time for the FastaParser and simply assume the first is the 
+        # header and the second is the sequence, or something similar.
 
     def _get_record(
         self, f_obj: io.TextIOWrapper
-    ) -> Union[Tuple[str, str], Tuple[str, str, str]]:
+    ) -> Iterator[Union[Tuple[str, str], Tuple[str, str, str]]]:
         """
         a method to be overridden by inherited classes.
         """
@@ -137,11 +135,22 @@ class FastaParser(Parser):
     Fasta Specific Parsing
     """
 
-    def _get_record(self, f_obj: io.TextIOWrapper) -> Tuple[str, str]:
+    def _get_record(self, f_obj: io.TextIOWrapper) -> Iterator[Tuple[str, str]]:
         """
         returns the next fasta record
         """
-        pass
+
+        seq_name = None
+
+        for idx, line in enumerate(f_obj):
+            line = line.strip()
+            if line == "":
+                raise ValueError(f"Got an empty line for {f_obj.name} @ line {idx+1}")
+            if line.startswith(">"):
+                seq_name = line[1:]
+                continue
+
+            yield (seq_name, line)
 
 
 class FastqParser(Parser):
@@ -149,8 +158,31 @@ class FastqParser(Parser):
     Fastq Specific Parsing
     """
 
-    def _get_record(self, f_obj: io.TextIOWrapper) -> Tuple[str, str, str]:
+    def _get_record(
+        self, f_obj: io.TextIOWrapper
+    ) -> Generator[Tuple[str, str, str], None, None]:
         """
         returns the next fastq record
         """
-        pass
+        read_qual = True
+        seq_name = None
+        seq = None
+
+        for idx, line in enumerate(f_obj):
+            line = line.strip()
+            if line == "":
+                raise ValueError(f"Got an empty line for {f_obj.name} @ line {idx+1}")
+            if line == "+":
+                continue  # skip this line
+
+            if line.startswith("@"):  # if its a header line, we'll store it
+                seq_name = line[1:]
+                continue
+
+            if (read_qual is True):  # if read_qual is True, then we'll assume the line is a sequence
+                seq = line
+                read_qual = False
+            else:
+                # we assume that quality will always be after the seq, so if we get here and read_qual is False then we can just return the tuple
+                yield (seq_name, seq, line)  # line here is the quality string
+                read_qual = True
