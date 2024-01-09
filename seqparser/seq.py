@@ -17,4 +17,5 @@ def reverse_transcribe(seq: str) -> str:
     Write a function that will transcribe an input sequence and reverse
     the sequence
     """
-    pass 
+    # Hey this is my comment
+    pass
