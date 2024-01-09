@@ -13,25 +13,24 @@ The learning goals of this project are:
 
 # Assignment Tasks
 
-## Coding Assessment -- these are placeholders for what we might ask you to do, but in this first assignment we will complete these for you.
-### For all of these which we've marked with an "x", you can copy from the reference, although you are free to write your own implementation for practice. 
-- [ x ] Write a Fasta Parser (Write this code in the parse.py file) to allow parsing of a Fasta using an iterator. 
-- [ x ] Write a Fastq Parser (Write this code in the parse.py file) to allow parsing of a Fastq file using an iterator. 
-- [ x ] Write a Transcription Function (Write this code in the seq.py file). 
-- [ x ] Write a Reverse Transcription Function (Write this code in the seq.py file). 
+## Coding Assessment -- these are placeholders for what we might ask you to do
+We've provided for you a basic Fasta and Fastq parser (written out in the parse.py file) to allow parsing of a Fasta and Fastq file using an iterator. Please take a look at that script to familiarize yourself with the functions. 
+### Assignment tasks
+- [ ] Write a Transcription Function (Write this code in the seq.py file). 
+- [ ] Write a Reverse Transcription Function (Write this code in the seq.py file). 
 
 ## Software Development Assessment 
-- [ x ] Create a pip installable tool (only locally, do not submit to PyPI)
-	- [ x ] Edit the `pyproject.toml` file to reflect author information
-	- [ x ] Update the dependencies to include those that you use in your code
+- [ ] Create a pip installable tool (only locally, do not submit to PyPI)
+	- [ ] Edit the `pyproject.toml` file to reflect author information
+	- [ ] Update the dependencies to include those that you use in your code
 
-- [ x ] Write a unit test (in the test.py file) for
-	- [ x ] Fasta Parser
-	- [ x ] Fastq Parser
-	- [ x ] Transcription
-	- [ x ] Reverse Transcription
+- [  ] Write a unit test (in the test.py file) for
+	- [ ] Fasta Parser
+	- [ ] Fastq Parser
+	- [ ] Transcription
+	- [ ] Reverse Transcription
 
-- [ x ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
+- [ ] Automate Testing with a [Github Actions](https://docs.github.com/en/actions)
 
 	See blogposts below on helping set up github actions with pytest:
 	
