@@ -33,5 +33,6 @@ def test_reverse_transcribe():
     """
     Write your unit test for the reverse transcribe function here.
     """
-    assert reverse_transcribe("ATCGCCT") == "AGGCGAU"
+#     assert reverse_transcribe("ATCGCCT") == "AGGCGAU"
+    assert reverse_transcribe("ATCGCCT") == "AGGCGAUfasdfdsafsdaf"
     pass
