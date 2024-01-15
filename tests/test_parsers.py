@@ -35,19 +35,19 @@ def test_FastaParser():
     """
     
     # Test normal file
-    good = FastaParser("/data/test.fa")
+    good = FastaParser("./data/test.fa")
     sequences = list(good)
     for name, seq in sequences:
         assert isinstance(seq, str), "Sequences should be in String format"
         
     # Test empty file
     with pytest.raises(ValueError):
-        blank = FastaParser("/tests/blank.fa")
+        blank = FastaParser("./tests/blank.fa")
         list(blank)
     
     # Test with a corrupted FASTA file
     with pytest.raises(ValueError):
-        bad = FastaParser("/tests/bad.fa")
+        bad = FastaParser("./tests/bad.fa")
         list(bad)
     pass
 
@@ -57,7 +57,7 @@ def test_FastaFormat():
     Test to make sure that a fasta file is being read in. If a fastq file is
     read, the first item is None
     """
-    fasta = FastaParser('/data/test.fa')
+    fasta = FastaParser('./data/test.fa')
     sequences = list(fasta)
     assert len(sequences) > 0, "No sequences found"
     assert sequences[0][0] is not None, "Wrong FASTA format, FASTQ detected"
@@ -70,7 +70,7 @@ def test_FastqParser():
     in the example Fastq File.
     """
     # Test normal file
-    good = FastqParser("/data/test.fq")
+    good = FastqParser("./data/test.fq")
     sequences = list(good)
     for name, seq, qual in sequences:
         assert isinstance(seq, str), "Sequences should be in String format"
@@ -82,7 +82,7 @@ def test_FastqFormat():
     Test to make sure fastq file is being read in. If this is a fasta file, the
     first line is None
     """
-    fastq = FastqParser('/data/test.fq')
+    fastq = FastqParser('./data/test.fq')
     sequences = list(fastq)
     assert len(sequences) > 0, "No sequences found"
     assert sequences[0][0] is not None, "Wrong FASTQ format, FASTA detected"

@@ -25,7 +25,7 @@ def test_transcribe():
     """
     Write your unit test for the transcribe function here.
     """
-    assert transcribe("ATCGCCT") == "TAGCGGA", "transcribe function not working properly"
+    assert transcribe("ATCGCCT") == "UAGCGGA", "transcribe function not working properly"
     pass
 
 
