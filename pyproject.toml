@@ -12,13 +12,14 @@ pythonpath = [
 
 [project]
 name = "seqparser"
-authors = [{name = "Han Chen", email = "han.chen@ucsf.edu"}]
+authors = [{name = "Yujie Zhang", email = "yujie.zhang@ucsf.edu"}]
 readme = "README.md"
 license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
     "pytest"
+    "typing"
 ]
 
 [project.urls]
